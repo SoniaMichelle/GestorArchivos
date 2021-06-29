@@ -1,0 +1,26 @@
+.fondo_formularios {
+    color: white;
+    background-color: #202020;
+}
+.divisor_horizontal {
+    border-color: white;
+}
+.botones {
+    color: white;
+    background-color: rgb(0, 0, 0);
+}
+.botones:hover {
+    color: black;
+    background-color: rgba(29, 29, 29, 0.384);
+}
+.links {
+    color: rgb(0, 0, 0);
+    
+}
+.links:hover {
+    color: rgb(110, 109, 109);
+    /* text-decoration: none; */
+}
+.barra {
+    background-color: #202020;
+}

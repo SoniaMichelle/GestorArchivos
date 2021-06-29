@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+body{
+    margin:0px;
+    padding:0px;
+	background-color:#F8F8F8;
+	
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-position: center;
+
+}
+.archivo{
+	cursor: pointer;
+}
+.contenedor{
+    width:100vw;
+    height:100vh;
+    position:absolute;
+    /* left:50%;
+    top:50%; */
+	justify-content: center;
+	align-items: center;
+   /* transform:translate(-50%,-50%);  */
+}
+.pagina-principal{
+	width: 100vw;
+	height: 55px;
+	background-color: #000000;
+	box-shadow:2px 6px 12px #d1d9e6;
+	background-image:url("../img/12.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	position: relative;
+    opacity: 0.9;
+}
+.segunda-pagina{
+	width: 100%;
+	height: 35%;
+}
+.cancelar{
+	position: absolute;
+	left: 50%;
+	bottom: -25px;
+	transform: translateX(-50%);
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background-color:#F8F8F8;
+	font-size: 1.2rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-shadow:2px 6px 20px rgba(0,0,0,0.12);
+}
+.cancelar a i{
+	color: #111111;
+}
+.segunda-pagina form{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+}
+.segunda-pagina button{
+	width: 220px;
+	height: 40px;
+	font-family: calibri;
+	margin: 10px 0px;
+	border:none;
+	outline: none;
+	border-radius: 20px;
+	background-color: #FFFFFF;
+	box-shadow: 12px 12px 30px rgba(0,0,0,0.1);
+}
+.segunda-pagina button:hover{
+	background-color: #36D7A2;
+	color: #FFFFFF;
+	transition: all ease 0.3s;
+}
+.boton{
+	width: 500px;
+	height: 40px;
+	font-family: calibri;
+	margin: 5px 0px;
+	border:none;
+	outline: none;
+	background-color: #d1c5f1;
+	box-shadow: 12px 12px 30px rgba(0,0,0,0.1);
+}
+.boton:hover{
+	background-color: #a88cf3;
+	color: #FFFFFF;
+	transition: all ease 0.3s;
+}
+.segunda-pagina input:focus{
+	box-shadow: 2px 2px 30px rgba(0,0,0,0.1);
+}
+.barra{
+	width:600px;
+	height: 35px;
+	background-color: #FFFFFF;
+	position: absolute;
+	left: 50%;
+	top: 0px;
+	transform: translateX(-50%);
+	border-radius: 0px 0px 20px 20px;
+
+}
+.barra a{
+	text-decoration: none;
+}
+.secion{
+	padding: 8px;
+}
+.segunda-pagina,.cancelar{
+	display: none;
+}
+.pagina-principal{
+	height: 100%;
+	border-radius: 0px;
+}
+.titulo{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	text-align: center;
+	font-family: calibri;
+}
+.titulo h1{
+    font-family: 'Staatliches', cursive;
+	font-size: 5rem;
+	color:#F8F8F8;
+	margin: 0px;
+	letter-spacing: 2px;
+	
+}
+.titulo p{
+	color:rgb(231, 231, 231);
+	margin: 0px;
+	font-size: 2rem;
+    font-family:'Roboto', sans-serif;
+}
+.form-btns{
+	position: absolute;
+	left: 50%;
+	bottom: 120px;
+	transform: translateX(-50%);
+	text-align: center;
+}
+.s-btn{
+	width:230px;
+	height: 42px;
+	margin: 5px 0px;
+	border: none;
+	outline: none;
+	border-radius: 20px;
+	font-family: calibri;
+	text-transform: uppercase;
+	font-size: 0.9rem;
+	letter-spacing: 1px;
+	font-weight: 700;
+	box-shadow: 2px 2px 30px rgba(0,0,0,0.5);
+}
+.s-btn{
+	background-color: #FFFFFF;
+	color: #171717;
+    cursor: pointer;
+}
+.form-btns a{
+	color: rgba(237,237,237,0.80);
+	letter-spacing: 1px;
+	font-family: calibri;
+	text-decoration: none;
+	
+}
+button:active{
+	transform: scale(1.05);
+}
+.active-sign-in .form-btns,
+.active-sign-up .form-btns{
+	display: none;
+	
+}
+.active-sign-in .pagina-principal{
+	height: 55%;
+	border-radius: 0% 0% 50% 50%/0% 0% 20% 20%;
+	animation:main 0.2s linear;
+ 
+}
+.active-sign-in .segunda-pagina,
+.active-sign-in .cancelar{
+	display: flex;
+}
+
+.active-sign-up .cancelar i,
+.active-sign-in .cancelar i{
+	animation: cancel 0.5s ;
+	
+}
+@keyframes main{
+	0%{
+		height:100%;
+	}
+	100%{
+		height:55%;
+	}
+}
+@keyframes cancel{
+	0%{
+		opacity: 0;
+		transform: rotate(-190deg);
+		
+	}
+	100%{
+		opacity: 1;
+		transform: rotate(0deg);
+		
+	}
+}

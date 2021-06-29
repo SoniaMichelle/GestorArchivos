@@ -1,0 +1,36 @@
+body{
+    background-image: url(https://picsum.photos/3840/2160);
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-position: center;
+}
+.fondo_formularios {
+    color: white;
+    background-color: #202020;
+}
+.divisor_horizontal {
+    border-color: white;
+}
+.botones {
+    color: rgb(12, 12, 12);
+    background-color: rgb(255, 255, 255);
+}
+.botones:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgb(121, 150, 194);
+}
+.links {
+    color: rgb(255, 255, 255);
+    
+}
+.links:hover {
+    color: rgb(110, 109, 109);
+    /* text-decoration: none; */
+}
+.barra {
+    background-color: #202020;
+}
+.navbar{
+    background-color: aliceblue;
+}

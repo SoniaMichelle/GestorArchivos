@@ -1,0 +1,12 @@
+<?php
+/* Mantiene una sesion viva de existir alguna 
+(esto solo pasa en los documentos que visitas despues de que ya iniciaste la sesion)*/  
+  session_start();
+  require_once "../../clases/Categorias.php";
+  $Categorias = new Categorias();
+  $datos = array(
+          "idUsuario" => $_SESSION["idUsuario"],
+          "categoria" => $_POST["categoria"]
+            );
+  echo $Categorias -> agregarCategoria($datos);
+?>
