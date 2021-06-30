@@ -20,6 +20,7 @@
     <div class="row justify-content-center">
       <div class="col-md-8">
         <!--onsubmit: para que se pueda uasar el require_one de html5  -->
+        <!--onsubmit: Ejecute un JavaScript cuando se envíe un formulario: -->
         <form class="shadow p-4 rounded-bottom fondo_formularios" id="frmRegistro" method="POST" onsubmit="return agregarUsuarioNuevo()">
           <div class="container">
             <div class="row">

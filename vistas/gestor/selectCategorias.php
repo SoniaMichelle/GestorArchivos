@@ -10,6 +10,8 @@
     $result = mysqli_query($conexion,$sql);
 
 ?>
+<!-- Creacion del selec para que el usuario pueda escoger en que ctaegoria quiere guardar
+el archivo -->
 
 <select name="categoriasArchivos" id="categoriasArchivos" class="form-control">
     <?php

@@ -1,7 +1,15 @@
 <?php
+/*  Mantiene una sesion viva de existir alguna 
+(esto solo pasa en los documentos que visitas despues de que ya iniciaste la sesion) */
 session_start();
-if (isset($_SESSION['usuario'])) {
-  include('header.php');
+/**
+   * - isset -> es el metodo que evalua
+   * - $_SESSION -> objeto arreglo global de php exclusiva pasa sesiones de usuario en el navegador/sistema
+   * - 'usuario' -> es la llave que buscamos para el valor especifico dentro de session
+   */
+if (isset($_SESSION['usuario'])) {//evaluamos si en la variable global de $_SESSION existe un dato colocado (regresa false si no esta definida)
+  include('header.php');/*toma todo el texto / código / marcado que existe en el 
+                        archivo especificado y lo copia en el archivo que usa la declaración de inclusión. */
 ?>
   <div class="container mt-5">
     <div class="row mt-5">
@@ -15,9 +23,10 @@ if (isset($_SESSION['usuario'])) {
                   <!-- Se agrega informacion del trigger propio del modal_insert -->
                   <i class="fas fa-folder-plus mr-2"></i>
                   Agregar Archivos
-                </span><!--  -->
+                </span>
               </div>
             </div>
+            <!-- Se manda a llamr a la funcion para mostrara la tabla -->
             <div id="datos_de_tabla"></div>
           </div>
         </div>
@@ -34,7 +43,7 @@ if (isset($_SESSION['usuario'])) {
           </button>
         </div>
         <div class="modal-body">
-          <!-- construccion del formulario de datos para agregar un nuevo estudiante -->
+          <!-- construccion del formulario de datos para agregar un nuevo archivo -->
           <form id="frmArchivos" enctype="multipart/form-data" method="post">
             <input type="text" id="idCategoria" name="idCategoria" hidden="true" class="form-control">
             <label>Nombre de la Categoría</label>
@@ -46,6 +55,7 @@ if (isset($_SESSION['usuario'])) {
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
+          <!-- Se manda a llamar el metodo para guardar archivos -->
           <button type="button" class="btn btn-outline-primary" id="btnGuardarArchivos" onclick="guardarArchivos()">Guardar</button>
         </div>
       </div>
@@ -61,7 +71,7 @@ if (isset($_SESSION['usuario'])) {
           </button>
         </div>
         <div class="modal-body">
-          <!-- construccion del formulario de datos para agregar una nuevo archivo -->
+          <!-- construccion del formulario de datos para mostrar los archivos obtenidos -->
           <div id="archivoObtenido"></div>
         </div>
         <div class="modal-footer">
@@ -74,9 +84,9 @@ if (isset($_SESSION['usuario'])) {
   <?php include('footer.php'); ?>
   <script type="text/javascript">
     $(document).ready(function() {
+      /* Recarga de pagina*/
       $('#datos_de_tabla').load("gestor/tabla_archivos.php");
       $('#categoriasLoad').load("gestor/selectCategorias.php");
-
     });
   </script>
 <?php

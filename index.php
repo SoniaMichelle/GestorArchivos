@@ -31,6 +31,7 @@
             </div>
         </div>
         <!--Segunda pagina, donde se encuentra el formulario--------------->
+        <!--onsubmit: Ejecute un JavaScript cuando se envíe un formulario: -->
         <div class="segunda-pagina">
             <form autocomplete="off" method="post" id="frmLogin" onsubmit="return logear()">
                 <div class="container mt-5">
@@ -93,12 +94,14 @@
       function logear() {
          $.ajax({
             type: "POST",
+            /* serialize: crea una cadena de texto con los valores del formulario */
             data: $('#frmLogin').serialize(),
             url: "procesos/usuario/login/login.php",
             success: function(respuesta) {
                respuesta = respuesta.trim();
                if (respuesta == 1) {
                   swal(":)", "Ingreso correctamente", "succes");
+                  /* redirigir el navegador a una nueva página, en este caso nos dirigimos a inicio */
                   window.location = "vistas/inicio.php";
                } else {
                   swal("Error!!!", "Regitrate o vuelve a intentarlo", "error");

@@ -1,14 +1,24 @@
 <?php
-
+/* Mandamos a llmar nuestra conexion de bd una sola vez */
   require_once "Conexion.php";
 
+  /* Creamos la clase hija que va a heredar los atributos de la clase Padre */
   class Gestor extends Conectar{
+    /* Creacion de la funcion donde se agregara el registro de archivo a la base de datos 
+    y obtendra como parametro los datos*/
     public function agregaRegistroArchivo($datos){
+      /* Mandamos a llamar a nuestra clase Conectar y le damos los parametros de la funcion conexion*/
       $conexion = Conectar::conexion();
+      /* Creacion de variable donde se insertaran los nuevos registros en la tabla_archivos y se especifican
+      los campos de la tabla */
       $sql = "INSERT INTO tabla_archivos (id_usuario,id_categoria,nombre_archivo,tipo_archivo,ruta_archivo) 
+      /*El VALUEScomando especifica los valores de una instrucción INSERT INTO.*/
                           VALUES (?,?,?,?,?)";
-
+      /* se crea y se envía a la base de datos. Algunos valores se dejan 
+        sin especificar, llamados parámetros y representados por un interrogante "?" */
       $query = $conexion->prepare($sql);
+      /* Agrega variables a una sentencia preparada como parámetros */
+      /* Se le asignas las llaves a la variable datos */
       $query->bind_param("iisss",$datos['idUsuario'],
                                 $datos['idCategoria'],
                                 $datos['nombreArchivo'],
@@ -18,16 +28,20 @@
       $query->close();
       return $respuesta;
     }
-
+    /* Funcion para obtener en nombre de archivo, se mandan a traer los datos de la base de datos*/
     public function obtenNombreArchivo($idArchivo){
       $conexion = Conectar::conexion();
+      /* SELECT se utiliza para seleccionar datos de una o más tablas (nombre_archivo)
+      from: de la tabla_archivos y solo va a extraer en campo id_archivo*/
       $sql = "SELECT nombre_archivo FROM tabla_archivos WHERE id_archivo = '$idArchivo'";
       $result = mysqli_query($conexion, $sql);
+      /* Se entrega por medio de un array todos los resultados */
       return mysqli_fetch_array($result)['nombre_archivo'];
     }
-
+    /* Se crea la funcion eliminar */
     public function eliminarRegistroArchivo($idArchivo){
       $conexion = Conectar::conexion();
+      /* Se eliminar registros existentes de la tabla_archivo */
       $sql = "DELETE FROM tabla_archivos WHERE id_archivo = ?";
       $query = $conexion -> prepare($sql);
       $query -> bind_param('i', $idArchivo);

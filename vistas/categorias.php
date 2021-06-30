@@ -1,8 +1,15 @@
 <?php
+/*  Mantiene una sesion viva de existir alguna 
+(esto solo pasa en los documentos que visitas despues de que ya iniciaste la sesion) */
 session_start();
-
-if (isset($_SESSION['usuario'])) {
-  include('header.php');
+/**
+   * - isset -> es el metodo que evalua
+   * - $_SESSION -> objeto arreglo global de php exclusiva pasa sesiones de usuario en el navegador/sistema
+   * - 'usuario' -> es la llave que buscamos para el valor especifico dentro de session
+   */
+if (isset($_SESSION['usuario'])) {//evaluamos si en la variable global de $_SESSION existe un dato colocado (regresa false si no esta definida)
+  include('header.php'); /*toma todo el texto / código / marcado que existe en el 
+                           archivo especificado y lo copia en el archivo que usa la declaración de inclusión. */
 ?>
   <div class="container mt-5">
     <div class="row mt-5">
@@ -12,8 +19,8 @@ if (isset($_SESSION['usuario'])) {
             <h1 class="display-4 text-center">Gestor archivos</h1>
             <div class="row text-center">
               <div class="col ">
+              <!-- Se agrega informacion del trigger propio del modal_insert -->
                 <span class="btn btn-outline-primary btn-lg mr-2" data-toggle="modal" data-target="#modal_insert">
-                  <!-- Se agrega informacion del trigger propio del modal_insert -->
                   <i class="fas fa-plus"></i>
                   Nueva Categoria
                 </span><!--  -->
@@ -35,7 +42,7 @@ if (isset($_SESSION['usuario'])) {
           </button>
         </div>
         <div class="modal-body">
-          <!-- construccion del formulario de datos para agregar un nuevo estudiante -->
+          <!-- construccion del formulario de datos para agregar una nueva categoria-->
           <form id="frmCategorias">
             <label>Nombre de la Categoría</label>
             <input type="text" class="form-control" id="nombreCategoria" name="nombreCategoria">
@@ -58,7 +65,7 @@ if (isset($_SESSION['usuario'])) {
           </button>
         </div>
         <div class="modal-body">
-          <!-- construccion del formulario de datos para agregar un nuevo estudiante -->
+          <!-- construccion del formulario para actualizar una categoria -->
           <form id="frmActualizaCategoria">
             <input type="text" id="idCategoria" name="idCategoria" hidden="true" class="form-control">
             <label>Nombre de la Categoría</label>

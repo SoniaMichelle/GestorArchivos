@@ -1,11 +1,21 @@
 <?php
+/*  Mantiene una sesion viva de existir alguna 
+(esto solo pasa en los documentos que visitas despues de que ya iniciaste la sesion) */
 session_start();
+/* Mandamos a llamar a nuestra conexion a la bd una sola vez */
 require_once "../../clases/Conexion.php";
+/* Manda a llamar al contructor conexion, que es donde se aloja la conexion de la bd */
 $c = new Conectar();
 $conexion = $c->conexion();
+/**
+   * - isset -> es el metodo que evalua
+   * - $_SESSION -> objeto arreglo global de php exclusiva pasa sesiones de usuario en el navegador/sistema
+   * - 'idUsuario', 'usuario' -> es la llave que buscamos para el valor especifico dentro de session
+   */
 $idUsuario = $_SESSION['idUsuario'];
 $NomUsuario = $_SESSION['usuario'];
 
+/* Se selecciona los campos */
 $sql = "SELECT 
     archivos.id_archivo as idArchivo,
     usuario.nombre as nombreUsuario,
@@ -41,12 +51,16 @@ $result = mysqli_query($conexion, $sql);
           <?php
           // Arreglo de extensione validas
           $extensionesValidas = array('png', 'jpg', 'pdf', 'gif', 'mp3', 'mp4');
+          /* Retorna un array que corresponde a la fila obtenida o null si es que 
+						no hay más filas en el resultset representado por el parámetro result. */
           while ($mostrar = mysqli_fetch_array($result)) {
+          /* CREACION DE VARIABLES PARA LA FUNCION DE LOS BOTONES */
             $rutaDescarga = "../archivos/" . $NomUsuario . "/" . $mostrar['nombreArchivo'];
             $nombreArchivo = $mostrar['nombreArchivo'];
             $idArchivo = $mostrar['idArchivo'];
           ?>
             <tr>
+            <!-- Se muestra en la tabla los datos traidos de la bd -->
               <td><?php echo $mostrar['idArchivo']; ?></td>
               <td><?php echo $mostrar['nombreCategoria']; ?></td>
               <td><?php echo $mostrar['nombreArchivo']; ?></td>
@@ -57,9 +71,12 @@ $result = mysqli_query($conexion, $sql);
               </td>
               <td>
                 <?php
+                /* Recorre los tipos de extenciones y verifica que esten correctos o que exitan en la variabla
+                si se encuentra en las extenciones selañadas se mostara el tipo de archivo  */
                 for ($i = 0; $i < count($extensionesValidas); $i++) {
                   if ($extensionesValidas[$i] == $mostrar['tipoArchivo']) {
                 ?>
+                <!-- Con este boton se guardaran los archivos tanto en la bd y en la tabla -->
                     <span data-toggle="modal" data-target="#visualizarArchivo" onclick="obtenerArchivoPorId(<?php echo $idArchivo ?>)">
                       <i class="fas fa-eye"></i></span>
                 <?php
@@ -68,6 +85,7 @@ $result = mysqli_query($conexion, $sql);
                 ?>
               </td>
               <td>
+              <!-- Boton que limina el archivo de la bd y la tabla de la interfaz -->
                 <span onclick="eliminarArchivo('<?php echo $idArchivo ?>')">
                   <i class="fa fa-trash"></i></span>
               </td>
@@ -80,7 +98,7 @@ $result = mysqli_query($conexion, $sql);
     </div>
   </div>
 </div>
-
+<!-- Complemento de la tabla -->
 <script type="text/javascript">
   $(document).ready(function() {
     $('#tablaArchivos').DataTable();
