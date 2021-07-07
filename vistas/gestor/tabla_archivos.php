@@ -50,7 +50,7 @@ $result = mysqli_query($conexion, $sql);
         <tbody>
           <?php
           // Arreglo de extensione validas
-          $extensionesValidas = array('png', 'jpg', 'pdf', 'gif', 'mp3', 'mp4');
+          $extensionesValidas = array('png', 'jpg', 'pdf', 'gif', 'mp3', 'mp4','JPG');
           /* Retorna un array que corresponde a la fila obtenida o null si es que 
 						no hay más filas en el resultset representado por el parámetro result. */
           while ($mostrar = mysqli_fetch_array($result)) {

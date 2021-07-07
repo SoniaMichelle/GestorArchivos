@@ -21,7 +21,7 @@
       <div class="col-md-8">
         <!--onsubmit: para que se pueda uasar el require_one de html5  -->
         <!--onsubmit: Ejecute un JavaScript cuando se envíe un formulario: -->
-        <form class="shadow p-4 rounded-bottom fondo_formularios" id="frmRegistro" method="POST" onsubmit="return agregarUsuarioNuevo()">
+        <form class="shadow p-4 rounded-bottom fondo_formularios" id="frmRegistro" method="POST">
           <div class="container">
             <div class="row">
               <div class="col-md-12 text-center">
@@ -117,6 +117,7 @@
           respuesta = respuesta.trim();
           if (respuesta == 1) {
             swal("Exito!!!", "Se agrego nuevo usuario", "success");
+            /* Cuando aparece el 2 el usuario ya existe */
           } else if (respuesta == 2) {
             swal("Alerta!!!", "Este usuario ya exite, agrega otro", "warning");
           } else {

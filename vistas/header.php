@@ -34,7 +34,7 @@
                             <a class="nav-link" href="gestor.php" id="producto"><i class="fas fa-folder-open mr-2"></i>Administrar</a>
                         </li>
                         <li class="nav-item me-2">
-                            <a class="nav-link" href="" class="btn" id="cuenta"><i class="fas fa-times-circle"></i>Salir</a>
+                            <a class="nav-link" href="../index.php" class="btn" id="cuenta"><i class="fas fa-times-circle"></i>Salir</a>
                         </li>
                     </ul>
                 </div> 

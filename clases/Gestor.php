@@ -69,6 +69,9 @@
         case 'png':
           return '<img src = "'.$ruta.'" width = "100%">';
           break;
+          case 'JPG':
+            return '<img src = "'.$ruta.'" width = "100%">';
+            break;
         case 'jpg':
           return '<img src = "'.$ruta.'" width = "100%">';
           break;
